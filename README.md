@@ -43,7 +43,7 @@ cd alioth && python alioth --version
 - `--thread`  参数指定扫描并发数量，如：10，默认并发为 1，最大并发 50
 
 
-<使用视频>
+[![alioth_usage](https://asciinema.org/a/IeXe93kTr7sprmPz5ozjXlHO1.svg)](https://asciinema.org/a/IeXe93kTr7sprmPz5ozjXlHO1)
 
 ## 插件编写
 
