@@ -16,7 +16,7 @@ alioth --version
 或者克隆本仓库代码
 
 ```bash
-git clone http://git.
+git clone https://github.com/jeffzh3ng/Alioth.git
 cd alioth && python alioth --version
 ```
 
@@ -47,10 +47,59 @@ cd alioth && python alioth --version
 
 ## 插件编写
 
+插件编写请遵循 `python3` 编码规范
+
+插件继承自 `POCBase` 类
+
+`_verify` 函数内编写验证代码，`parse_result` 函数处理测试结果，`parse_result` 函数继承 `Output` 类，成功调用 `success` 失败调用 `fail`
 
 
+```python
+from alioth.lib.core.poc import POCBase, Output
 
-## 调用接口
+
+class RedisUnAuth(POCBase):
+    pid = '190102_test_test'
+    name = 'test name'
+    author = 'jeffzhang'
+    app = 'test'
+    version = '1.0.0'
+    v_type = 'sql inject',
+    desc = 'test desc',
+    date = '2019.01.02',
+
+    def _verify(self):
+        result = {}
+        try:
+            if self.target:
+                result['target'] = self.target
+                result['result'] = "test result"
+        except Exception as e:
+            self.error = e
+        return self.parse_result(result)
+
+    def parse_result(self, result):
+        output = Output(self)
+        if result:
+            output.success(result)
+        else:
+            output.fail(self.error)
+        return output
+```
+
+## 外部应用集成 Alioth
+
+Alioth 提供了对外接口用于集成
+
+从 `alioth.api.utils` 引入 `AliothScanner` 类，传入 `target` 以及 `poc_info`，调用 `run` 方法返回测试结果，返回的结果为 `list`
+
+`target` 可以为 `str` 或者 `list`，`target` 类型可以是 `ip`、域名或网络段。
+
+`poc_info` 为字典类型，需包含 `name`、`pocstring` 以及 `thread` 扫描线程
+
+其中 `name` 为扫描插件名称，`pocstring` 为 `poc` 内容，`thread` 为扫描并发，`int` 类型，最小为 `1` 最大为 `50`
+
+示例代码：
 
 ```python
 from alioth.api.utils import AliothScanner
