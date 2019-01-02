@@ -49,4 +49,27 @@ cd alioth && python alioth --version
 
 
 
-## 外部接口
+
+## 调用接口
+
+```python
+from alioth.api.utils import AliothScanner
+
+
+def poc_scanner(target_list, poc_info):
+    scanner = AliothScanner(target_list, poc_info)
+    result = scanner.run()
+    return result
+
+
+if __name__ == '__main__':
+    target = ['127.0.0.1', '192.168.111.0/24']
+    poc = {
+        'name': 'Redis unauthorized access',
+        'pocstring': open('/tmp/170815_redis_all_unauthorized.py').read(),
+        'mode': 'verify',
+        'thread': 5
+    }
+    res = poc_scanner(target, poc)
+    print(res)
+```
