@@ -1,5 +1,4 @@
-# Alioth
-开源远程漏洞检测框架
+# Alioth [![Python 3.5](https://img.shields.io/badge/python-3.5+-blue.svg)](https://www.python.org/) [![GPLv3](https://img.shields.io/badge/license-GPLv3-red.svg)](https://github.com/jeffzh3ng/Alioth/blob/master/LICENSE)
 
 一款基于 `Python3` 的远程漏洞检测框架，写这个轮子的初衷是没找到合适的漏洞检测框架，之前一直使用知道创宇团队的 `Pocsuite`，但目前没有支持 `Python3`（在开发，但一直没有公开），
 所以不打算等了自己造个简单点的轮子
@@ -10,14 +9,14 @@
 
 ```bash
 pip install alioth
-alioth --version
+alioth -h
 ```
 
 或者克隆本仓库代码
 
 ```bash
 git clone https://github.com/jeffzh3ng/Alioth.git
-cd alioth && python alioth --version
+cd Alioth/ && python3 alioth.py -h
 ```
 
 或者下载压缩包解压使用

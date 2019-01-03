@@ -95,7 +95,7 @@ def _opt_parse(target, poc, target_file, thread):
         sys.exit()
     if not thread:
         thread = DEFAULT_SCAN_THREATS
-    elif thread > DEFAULT_SCAN_THREAT_MAX:
+    if thread > DEFAULT_SCAN_THREAT_MAX:
         thread = DEFAULT_SCAN_THREAT_MAX
     return target_list, poc_list, thread
 
