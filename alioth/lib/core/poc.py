@@ -25,6 +25,7 @@ class BasePoC:
     def __init__(self, target, mode='verify'):
         self.target = target
         self.mode = mode
+        self.error = ''
         self.success_count = SCAN_RESULT.SUCCESS_COUNT
 
     def _verify(self, *args, **kwargs):
