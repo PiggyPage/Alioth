@@ -7,7 +7,7 @@
 
 
 __title__ = 'alioth'
-__version__ = '1.0.8'
+__version__ = '1.0.9'
 __author__ = 'jeffzhang'
 __author_email__ = 'jeffzh3ng@gmail.com'
 __license__ = 'GPL 3.0'
