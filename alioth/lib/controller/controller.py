@@ -33,8 +33,8 @@ def start(options):
     try:
         logger.data("")
         logger.info("Scanning")
-        logger.info("Start {} threads".format(thread))
-        logger.info("Tasks {}".format(len(task_list)))
+        logger.info("Concurrent: {}".format(thread))
+        logger.info("Total tasks: {}".format(len(task_list)))
         logger.data("")
         coroutine(task_list, thread)
     except Exception as e:
